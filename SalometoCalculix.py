@@ -20,12 +20,12 @@
 
 # CONFIGURATION - EDIT THE FOLLOWING LINE TO MATCH YOUR UNICAL BINARY
 
-unical_bin = '/home/lucio/Desarrollo/ExportMEsh/unical/unical' # example for Linux
-#unical_bin = "C:\\Daten\\gmsh-2.10.0-Windows\\unical.exe" # example for Windows
+unical_bin = '/home/user/unical/unical' # example for Linux
+#unical_bin = "C:\\Daten\\unical\\unical.exe" # example for Windows
 
 
 # Configuration the optional option to poen results in cgx
-cgx_bin = '/home/lucio/Calculix/cgx_2.9 ' # CGX binary exapmle for Linux
+cgx_bin = '/home/user/Calculix/cgx_2.9 ' # CGX binary exapmle for Linux
 
 # END CONFIGURATION
 
@@ -78,6 +78,8 @@ def proceed():
         QtGui.QMessageBox.critical(None,'Error',"Unexpected error in Salome to Calculix Script: {}".format(sys.exc_info()[0]),QtGui.QMessageBox.Abort)    
     if rb_cgx.isChecked():
         open_CGX()
+    if rb_delet_e_f.isChecked():
+        delete_edges_and_faces_mesh()
     #hide()
 
 def hide():
@@ -140,8 +142,9 @@ okbox = QtGui.QDialogButtonBox(dialog)
 okbox.setOrientation(QtCore.Qt.Horizontal)
 okbox.setStandardButtons(QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.Ok)
 l_options   = QtGui.QLabel("Aditional options:")
-rb_cgx = QtGui.QRadioButton("Open the result with CGX at the end")
-rb_delet_e_f = QtGui.QRadioButton("Delete delete edges and faces in selected mesh")
+rb_cgx = QtGui.QCheckBox("Open the result with CGX at the end")
+rb_delet_e_f = QtGui.QCheckBox("Delete delete edges and faces in selected mesh")
+rb_cgx.setChecked(False)
 layout.addWidget(l_selectMesh,1,0)
 layout.addWidget(le_selectMesh,2,0)
 layout.addWidget(pb_sel_mesh,2,1)
