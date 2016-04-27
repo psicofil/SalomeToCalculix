@@ -1,5 +1,4 @@
 # salomeToCalculix
-================
 
 A python script that outputs a Salome mesh to Calculix using unical converter for Bernhardi, Aug 2011
 
@@ -14,8 +13,7 @@ You can get the binary code unical compiling the source as indicated in the inst
 * You can configure CGX binary location inside of salomeToCalculix.py and launch cgx after the mesh convert
 
     
-![ScreenShot](salomeToCalculix.png)
+![ScreenShot](SalomeToCalculix.png)
 
 Youtube Video: https://www.youtube.com/watch?v=yxqawAr1H3s
     
-# SalomeToCalculix
