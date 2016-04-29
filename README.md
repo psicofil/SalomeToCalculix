@@ -15,13 +15,15 @@ To run:
 
 # Previews
 
+Nodes and Faces:
+
 ![ScreenShot](SalomeToCalculix2.png)
 
-Nodes and Faces
+
+Elements:
 
 ![ScreenShot](SalomeToCalculix3.png)
 
-Elements
 
 # Videos
 Old Youtube Video version: https://www.youtube.com/watch?v=yxqawAr1H3s
