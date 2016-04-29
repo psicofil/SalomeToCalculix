@@ -13,11 +13,22 @@ To run:
 
 * You can configure CGX binary location inside of salomeToCalculix.py and launch cgx after the mesh convert
 
+# Previews
 
 ![ScreenShot](SalomeToCalculix2.png)
-
+Nodes and Faces
 
 ![ScreenShot](SalomeToCalculix3.png)
+Elements
 
+# Videos
 Old Youtube Video version: https://www.youtube.com/watch?v=yxqawAr1H3s
-    
+
+# Know Problems
+* Not work in Salome 7.7
+* It was not tested in Windows
+* No report unical converter shown
+
+# To Do
+* Fix to work in Salome 7.7 or higher
+* Test in Windows
