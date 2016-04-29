@@ -82,13 +82,16 @@ def proceed():
         delete_edges_and_faces_mesh()
     #hide()
 
+
 def hide():
-    dialog.hide()              
-    
+       dialog.hide()              
+
+
 def meshFile():
     PageName = QtGui.QFileDialog.getSaveFileName(QtGui.qApp.activeWindow(),'Select inp file result ',"Result.inp",filter ="inp (*.inp *.)")
     le_inp_file.setText(str(PageName))
-    
+
+
 def open_CGX():
     command_cgx = cgx_bin + '-c ' + le_inp_file.text()
     try:
@@ -96,7 +99,8 @@ def open_CGX():
         process.startDetached('xterm -e ' + command_cgx)
     except:
         QtGui.QMessageBox.critical(None,'Error',"Unexpected error in CGX process to open the result",QtGui.QMessageBox.Abort)
-    
+
+
 def name_mesh():
     meshes=findSelectedMeshes()
     if not meshes == None:
@@ -104,7 +108,8 @@ def name_mesh():
             if not mesh == None:
                 mName=mesh.GetName()
                 le_selectMesh.setText(mName)
-                
+
+
 def delete_edges_and_faces_mesh():
     meshes=findSelectedMeshes()
     if not meshes == None:
@@ -118,11 +123,14 @@ def delete_edges_and_faces_mesh():
                 mesh.RemoveGroupWithContents(Group_2)
 
 
+
 if salome.sg.hasDesktop():
   salome.sg.updateObjBrowser(1)
    
-    
-##### GUI APLIACTION #####
+
+
+### GUI APLIACTION ###
+
 dialog = QtGui.QDialog()
 dialog.resize(600,200)
 dialog.setWindowTitle("Salome to Calculix")
