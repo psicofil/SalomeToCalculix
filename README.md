@@ -33,10 +33,8 @@ Elements:
 Old Youtube Video version: https://www.youtube.com/watch?v=yxqawAr1H3s
 
 # Know Problems
-* Not work in Salome 7.7
-* It was not tested in Windows
 * No report unical converter shown
+* Not work whit multiple meshes
 
 # To Do
-* Fix to work in Salome 7.7 or higher
-* Test in Windows
+* Add a report unical in the gui
