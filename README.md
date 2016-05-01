@@ -6,9 +6,9 @@ To run:
 * First configure the unical binary in the configuration line inside of salomeToCalculix.py
 * You can get the binary code unical compiling the source as indicated in the instructions on unical1_b.c which it is a modified version of unical2 provided by rafal brzegowy
 
-* To compile whit gcc:
+To compile whit gcc:
 
-* gcc -o2 -static -o unical unical1_b.c
+gcc -o2 -static -o unical unical1_b.c
 
 * Then select the mesh you wish to export and go to file->load script and run salomeToCalculix.py
 * Read unical c code for more information
