@@ -42,19 +42,14 @@ from platform import system
 def findSelectedMeshes():
     meshes=list()
     smesh = smeshBuilder.New(salome.myStudy)
-    nrSelected=salome.sg.SelectedCount()
-    
-    foundMesh=False
-    for i in range(nrSelected):
-        selected=salome.sg.getSelected(i)
+    selected=salome.sg.getSelected(0)
+    try:
         selobjID=salome.myStudy.FindObjectID(selected)
         selobj=selobjID.GetObject()
-        if selobj.__class__ ==SMESH._objref_SMESH_Mesh:
-            mName=selobjID.GetName().replace(" ","_")
-            foundMesh=True
-            mesh=smesh.Mesh(selobj)
-            meshes.append(mesh)
-    if not foundMesh:
+        mName=selobjID.GetName().replace(" ","_")
+        mesh=smesh.Mesh(selobj)
+        meshes.append(mesh)
+    except:
         QtGui.QMessageBox.critical(None,'Error',"You have to select a mesh object and then run this script.",QtGui.QMessageBox.Abort)
         return None
     else:
