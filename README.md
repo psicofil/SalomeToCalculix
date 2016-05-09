@@ -1,4 +1,4 @@
-# salomeToCalculix
+// salomeToCalculix
 
 A python script that outputs a Salome mesh to Calculix using unical converter for Bernhardi, Aug 2011
 
@@ -32,9 +32,16 @@ Elements:
 # Videos
 Old Youtube Video version: https://www.youtube.com/watch?v=yxqawAr1H3s
 
+
+# News
+01/05/2016 - Now work in Windows and Salome 7
+09/05/2016 - Save in .msh format option
+
+
 # Know Problems
 * No report unical converter shown
 * Not work whit multiple meshes
 
 # To Do
 * Add a report unical in the gui
+* Improvements in the code, written as a class
