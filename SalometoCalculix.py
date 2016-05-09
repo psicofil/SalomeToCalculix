@@ -39,6 +39,7 @@ from salome.smesh import smeshBuilder
 from platform import system
 
 
+
 def findSelectedMeshes():
     meshes=list()
     smesh = smeshBuilder.New(salome.myStudy)
@@ -79,11 +80,11 @@ def proceed():
 
 
 def hide():
-       dialog.hide()              
+    dialog.hide()              
 
 
 def meshFile():
-    PageName = QtGui.QFileDialog.getSaveFileName(QtGui.qApp.activeWindow(),'Select inp file result ',"Result.inp",filter ="inp (*.inp *.)")
+    PageName = QtGui.QFileDialog.getSaveFileName(QtGui.qApp.activeWindow(),'Select inp or msh file result ',"Result.inp",filter ="inp (*.inp *.);;msh (*.msh *.)")
     le_inp_file.setText(str(PageName))
 
 
@@ -133,7 +134,7 @@ layout = QtGui.QGridLayout(dialog)
 l_inp_file   = QtGui.QLabel("inp file result:")
 le_inp_file   = QtGui.QLineEdit()
 pb_inp_file = QtGui.QPushButton()
-pb_inp_file.setText("inp file result")
+pb_inp_file.setText("file result")
 l_selectMesh = QtGui.QLabel("Selected Mesh:")
 le_selectMesh = QtGui.QLineEdit()
 le_selectMesh.setEnabled(False)
