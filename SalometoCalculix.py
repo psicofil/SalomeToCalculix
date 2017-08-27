@@ -34,7 +34,18 @@ import subprocess
 import sys
 import tempfile
 import  SMESH, SALOMEDS
-from PyQt4 import QtGui,QtCore
+
+try:
+    from PyQt4 import QtGui,QtCore
+    from PyQt4.QtGui import *
+    from PyQt4.QtCore import *
+except:
+    from PyQt5.QtWidgets import QWidget, QMessageBox
+    from PyQt5 import QtCore, QtGui
+    import PyQt5.QtCore as QtCore
+    from PyQt5.QtWidgets import *
+    from PyQt5.QtCore import Qt
+
 from salome.smesh import smeshBuilder
 from platform import system
 
@@ -51,7 +62,7 @@ def findSelectedMeshes():
         mesh=smesh.Mesh(selobj)
         meshes.append(mesh)
     except:
-        QtGui.QMessageBox.critical(None,'Error',"You have to select a mesh object and then run this script.",QtGui.QMessageBox.Abort)
+        QMessageBox.critical(None,'Error',"You have to select a mesh object and then run this script.",QMessageBox.Abort)
         return None
     else:
         return meshes
@@ -69,9 +80,9 @@ def proceed():
         command = unical_bin + ' ' + temp_file + ' ' + file_inp
         print command
         output = subprocess.check_output([command, '-1'], shell=True, stderr=subprocess.STDOUT,)
-        QtGui.QMessageBox.information(None,'successful result','The mesh has been exported successfully in ' + file_inp,QtGui.QMessageBox.Ok)
+        QMessageBox.information(None,'successful result','The mesh has been exported successfully in ' + file_inp,QMessageBox.Ok)
     except:
-        QtGui.QMessageBox.critical(None,'Error',"Unexpected error in Salome to Calculix Script: {}".format(sys.exc_info()[0]),QtGui.QMessageBox.Abort)    
+        QMessageBox.critical(None,'Error',"Unexpected error in Salome to Calculix Script: {}".format(sys.exc_info()[0]),QMessageBox.Abort)    
     if rb_cgx.isChecked():
         open_CGX()
     if rb_delet_e_f.isChecked():
@@ -84,7 +95,7 @@ def hide():
 
 
 def meshFile():
-    PageName = QtGui.QFileDialog.getSaveFileName(QtGui.qApp.activeWindow(),'Select inp or msh file result ',"Result.inp",filter ="inp (*.inp *.);;msh (*.msh *.)")
+    PageName = QFileDialog.getSaveFileName(qApp.activeWindow(),'Select inp or msh file result ',"Result.inp",filter ="inp (*.inp *.);;msh (*.msh *.)")
     le_inp_file.setText(str(PageName))
 
 
@@ -94,7 +105,7 @@ def open_CGX():
         process = QtCore.QProcess()
         process.startDetached('xterm -e ' + command_cgx)
     except:
-        QtGui.QMessageBox.critical(None,'Error',"Unexpected error in CGX process to open the result",QtGui.QMessageBox.Abort)
+        QMessageBox.critical(None,'Error',"Unexpected error in CGX process to open the result",QMessageBox.Abort)
 
 
 def name_mesh():
@@ -127,27 +138,26 @@ if salome.sg.hasDesktop():
 
 ### GUI APLIACTION ###
 
-dialog = QtGui.QDialog()
+dialog = QDialog()
 dialog.resize(600,200)
 dialog.setWindowTitle("Salome to Calculix")
-layout = QtGui.QGridLayout(dialog)
-l_inp_file   = QtGui.QLabel("inp file result:")
-le_inp_file   = QtGui.QLineEdit()
-pb_inp_file = QtGui.QPushButton()
+layout = QGridLayout(dialog)
+l_inp_file   = QLabel("inp file result:")
+le_inp_file   = QLineEdit()
+pb_inp_file = QPushButton()
 pb_inp_file.setText("file result")
-l_selectMesh = QtGui.QLabel("Selected Mesh:")
-le_selectMesh = QtGui.QLineEdit()
+l_selectMesh = QLabel("Selected Mesh:")
+le_selectMesh = QLineEdit()
 le_selectMesh.setEnabled(False)
-pb_sel_mesh = QtGui.QPushButton()
+pb_sel_mesh = QPushButton()
 pb_sel_mesh.setText("Select Mesh")
-name_mesh()
-            
-okbox = QtGui.QDialogButtonBox(dialog)
+name_mesh()    
+okbox = QDialogButtonBox(dialog)
 okbox.setOrientation(QtCore.Qt.Horizontal)
-okbox.setStandardButtons(QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.Ok)
-l_options   = QtGui.QLabel("Aditional options:")
-rb_cgx = QtGui.QCheckBox("Open the result with CGX at the end")
-rb_delet_e_f = QtGui.QCheckBox("Delete delete edges and faces in selected mesh")
+okbox.setStandardButtons(QDialogButtonBox.Cancel|QDialogButtonBox.Ok)
+l_options   = QLabel("Aditional options:")
+rb_cgx = QCheckBox("Open the result with CGX at the end")
+rb_delet_e_f = QCheckBox("Delete delete edges and faces in selected mesh")
 rb_cgx.setChecked(False)
 layout.addWidget(l_selectMesh,1,0)
 layout.addWidget(le_selectMesh,2,0)
@@ -161,7 +171,7 @@ layout.addWidget(rb_delet_e_f,7,0)
 layout.addWidget(okbox,8,0)
 pb_sel_mesh.clicked.connect(name_mesh)
 pb_inp_file.clicked.connect(meshFile)
-QtCore.QObject.connect(okbox, QtCore.SIGNAL("accepted()"), proceed)
-QtCore.QObject.connect(okbox, QtCore.SIGNAL("rejected()"), hide) 
+okbox.accepted.connect(proceed)
+okbox.rejected.connect(hide)
 QtCore.QMetaObject.connectSlotsByName(dialog)
 dialog.show()
