@@ -1,0 +1,41 @@
+*node, nset=nall
+1, 0, 0, 0
+2, 1, 0, 0
+3, 1, 1, 0
+4, 0, 1, 0
+5, 0, 0, 1
+6, 1, 0, 1
+7, 1, 1, 1
+8, 0, 1, 1
+*nset, nset=N7
+7, 
+*nset, nset=N8
+8, 
+*nset, nset=N6
+6, 
+*nset, nset=N5
+5, 
+*nset, nset=N4
+4, 
+*nset, nset=N3
+3, 
+*nset, nset=N2
+2, 
+*nset, nset=N1
+1, 
+*solid section, material=steel, elset=C3D8
+*element, elset=C3D8,type=C3D8
+1, 1, 4, 3, 2, 5, 8, 7, 6, 
+*material, name=steel
+*elastic
+209000.0, 0.3
+*density
+7.85e-09
+*step
+*frequency
+12
+*nodefile
+u
+*elfile, output=3D
+s, e
+*endstep
