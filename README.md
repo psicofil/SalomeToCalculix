@@ -55,6 +55,19 @@ Old version Youtube video:
 
 
 
+# Your help
+
+Please, you may:
+
+- Simply use this software and ask questions.
+- Share your models and screenshots.
+- Report problems by [posting issues](./issues).
+- Do something from the [TODO-list](#TODO).
+
+<br/><br/>
+
+
+
 # TODO
 
 - Add logging output to the Salome python console.
