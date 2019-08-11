@@ -2,7 +2,7 @@
 
 
 """
-    © Gomez Lucio, April 2016 - original code
+    © Lucio Gomez, April 2016 - original code
     © Ihor Mirzov, August 2019 - refactoring and improvements
     Distributed under GNU General Public License v3.0
 

@@ -1,4 +1,4 @@
-© Gomez Lucio, April 2016  
+© Lucio Gomez, April 2016  
 © Ihor Mirzov, August 2019  
 Distributed under GNU General Public License v3.0
 
