@@ -1,0 +1,24 @@
+*node, nset=nall
+1, 0, 0, 0
+2, 1, 0, 0
+*nset, nset=N1
+1, 
+*nset, nset=N2
+2, 
+*beam section, section=rect, material=steel, elset=B31
+1.0, 1.0
+*element, elset=B31,type=B31
+1, 1, 2, 
+*material, name=steel
+*elastic
+209000.0, 0.3
+*density
+7.85e-09
+*step
+*frequency
+12
+*nodefile
+u
+*elfile, output=3D
+s, e
+*endstep
