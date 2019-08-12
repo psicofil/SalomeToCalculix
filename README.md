@@ -10,7 +10,7 @@ Distributed under GNU General Public License v3.0
 
 Outputs a Salome mesh to CalculiX .inp file. Generates temporary UNV file and converts it to INP format. For now two converters are available:
 
-- unical3, Bernhardi, August 2011
+- unical3, Otto-Ernst Bernhardi, August 2011
 - unv2ccx, Ihor Mirzov, August 2019
 
 Now script supports multiple mesh processing.
@@ -21,15 +21,20 @@ Now script supports multiple mesh processing.
 
 # Usage
 
-You'll need only two files:
+List of needed files:
 
 - [salome2ccx.py](./salome2ccx.py) - main script
 - [salome2ccx.ui](./salome2ccx.ui) - GUI form for the main script
+- [converters](./converters) - converters binaries for Linux and Windows
 
-See folder [tests](./tests) for list of successfully converted models.
+How to use:
 
 - In Salome select the mesh you wish to export.
 - Run script *salome2ccx.py* from the Mesh module (Ctrl+T or File->Load Script...)
+
+To be able to open conversion result in CalculiX CGX, configure path to executable in the script. Default path is */usr/local/bin/cgx* (Linux).
+
+See folder [tests](./tests) for list of successfully converted models.
 
 <br/><br/>
 
@@ -80,10 +85,10 @@ Please, you may:
 
 # For developers
 
-To compile unical converter use command (Linux):
+Here could be found sources and binaries for the [unv2ccx converter](https://github.com/imirzov/unv2ccx/releases).
+
+To compile unical converter in Windows you'll need *gcc* from [Cygwin](https://www.cygwin.com/). File *cygwin1.dll* is used by *unical3.exe*. In linux use command:
 
     gcc unical3.c -o unical3
 
-In Windows you'll need *gcc* from [Cygwin](https://www.cygwin.com/). File *cygwin1.dll* is used by *unical3.exe*.
-
-Here could be found sources and binaries for the [unv2ccx converter](https://github.com/imirzov/unv2ccx/releases).
+GUI uses PyQt library. The script shouldn't be mixed with Python 3, because Salome API uses Python 2.
