@@ -66,7 +66,7 @@ Please, you may:
 
 - Simply use this software and ask questions.
 - Share your models and screenshots.
-- Report problems by [posting issues](./issues).
+- Report problems by [posting issues](https://github.com/psicofil/SalomeToCalculix/issues).
 - Do something from the [TODO-list](#TODO).
 
 <br/><br/>
