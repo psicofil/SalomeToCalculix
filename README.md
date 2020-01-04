@@ -6,6 +6,21 @@ Distributed under GNU General Public License v3.0
 
 
 
+---
+
+[How to use](#how-to-use) |
+[Screenshots](#screenshots) |
+[Videos](#videos) |
+[Your help](#your-help) |
+[TODO](#todo) |
+[For developers](#for-developers)
+
+---
+
+<br/><br/>
+
+
+
 # Salome to CalculiX mesh exporter
 
 Outputs a Salome mesh to CalculiX .inp file. Generates temporary UNV file and converts it to INP format. For now two converters are available:
@@ -19,7 +34,7 @@ Now script supports multiple mesh processing.
 
 
 
-# Usage
+# How to use
 
 List of needed files:
 
@@ -40,7 +55,7 @@ See folder [tests](./tests) for list of successfully converted models.
 
 
 
-# Screenshot
+# Screenshots
 
 INP mesh successfully exported from Salome to [CalculiX CAE](https://github.com/imirzov/ccx_cae):
 
