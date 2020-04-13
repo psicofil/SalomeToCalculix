@@ -43,7 +43,7 @@ List of needed files:
 - [converters](./converters) - converters binaries for Linux and Windows
 
 How to use:
-
+- Prior running the script update variables *cgx_bin* and *script_dir* in the code.
 - In Salome select the mesh you wish to export.
 - Run script *salome2ccx.py* from the Mesh module (Ctrl+T or File->Load Script...)
 
