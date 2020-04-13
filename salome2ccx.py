@@ -8,13 +8,29 @@
 
     Exports Salome mesh to Calculix INP format.
     Run from Salome Mesh module with File->Load Script... (Ctrl+T)
+    Before run update variables 'cgx_bin' and 'script_dir' below.
 """
 
 
-import os, sys, subprocess, tempfile, inspect, shutil
-import salome, SMESH, SALOMEDS
-from salome.smesh import smeshBuilder
-from platform import system
+# Path to CGX binary (exapmle for Linux)
+cgx_bin = '/usr/local/bin/cgx'
+# Path to the script folder
+script_dir = '/media/ihor/WORK/Calculix/salome2ccx'
+
+
+import os
+import sys
+import subprocess
+import tempfile
+import inspect
+import shutil
+
+try:
+    import salome
+    from salome.smesh import smeshBuilder
+except:
+    print('Run this script from SALOME.')
+    sys.exit()
 try:
     from PyQt4 import QtGui, QtCore, uic
     from PyQt4.QtGui import *
@@ -24,22 +40,18 @@ except:
     from PyQt5.QtWidgets import *
 
 
-# Path to CGX binary (exapmle for Linux)
-cgx_bin = '/usr/local/bin/cgx'
-
-
 class Dialog(QDialog):
 
 
     def __init__(self):
-        current_script = inspect.getfile(inspect.currentframe()) # full path to this script
-        self.script_dir = os.path.dirname(current_script) # path to directory with this script 
+        # current_script = inspect.getfile(inspect.currentframe()) # full path to this script
+        # script_dir = os.path.dirname(current_script) # path to directory with this script
 
         # Create dialog window
         super(Dialog, self).__init__()
 
         # Load form for GUI
-        gui_form_file = os.path.join(self.script_dir, 'salome2ccx.ui')
+        gui_form_file = os.path.join(script_dir, 'salome2ccx.ui')
         uic.loadUi(gui_form_file, self)
 
         self.meshes = []
@@ -62,7 +74,7 @@ class Dialog(QDialog):
     # Select folder to put conversion results to
     def output_folder(self):
         INP_dir = QFileDialog.getExistingDirectory(self,
-                        'Select output folder', self.script_dir,
+                        'Select output folder', script_dir,
                         QFileDialog.ShowDirsOnly)
         self.le_output_folder.setText(INP_dir)
 
@@ -86,13 +98,13 @@ class Dialog(QDialog):
         #  If meshes are chosen
         if len(self.meshes):
 
-            # Chosen output folder 
+            # Chosen output folder
             output_folder = self.le_output_folder.text()
             if os.path.isdir(output_folder):
 
                 # Path to chosen converter's binary
                 extension = ('.exe' if os.name=='nt' else '') # file extension in OS
-                binary = os.path.join(self.script_dir, 'converters',
+                binary = os.path.join(script_dir, 'converters',
                     self.converter.currentText() + extension)
 
                 # For each of selected meshes
@@ -205,7 +217,14 @@ class Dialog(QDialog):
 
 if __name__ == '__main__':
 
+    if not os.path.isfile(cgx_bin):
+        print('ERROR! Update \"cgx_bin\" variable in the code.')
+        sys.exit()
+    if not os.path.isdir(script_dir):
+        print('ERROR! Update \"script_dir\" variable in the code.')
+        sys.exit()
+
     if salome.sg.hasDesktop():
-        salome.sg.updateObjBrowser(1)
+        salome.sg.updateObjBrowser()
 
     Dialog().show()
