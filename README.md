@@ -57,7 +57,7 @@ See folder [tests](./tests) for list of successfully converted models.
 
 # Screenshots
 
-INP mesh successfully exported from Salome to [CalculiX CAE](https://github.com/imirzov/ccx_cae):
+INP mesh successfully exported from Salome to [CalculiX CAE](https://github.com/calculix/cae):
 
 ![Screenshot](salome2ccx.png)
 
@@ -100,7 +100,7 @@ Please, you may:
 
 # For developers
 
-Here could be found sources and binaries for the [unv2ccx converter](https://github.com/imirzov/unv2ccx/releases).
+Here could be found sources and binaries for the [unv2ccx converter](https://github.com/calculix/unv2ccx/releases).
 
 To compile unical converter in Windows you'll need *gcc* from [Cygwin](https://www.cygwin.com/). File *cygwin1.dll* is used by *unical3.exe*. In linux use command:
 
