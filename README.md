@@ -79,6 +79,7 @@ Old version Youtube video:
 
 Please, you may:
 
+- Star this project.
 - Simply use this software and ask questions.
 - Share your models and screenshots.
 - Report problems by [posting issues](https://github.com/psicofil/SalomeToCalculix/issues).
