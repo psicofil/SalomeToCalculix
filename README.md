@@ -57,7 +57,7 @@ See folder [tests](./tests) for list of successfully converted models.
 
 # Screenshots
 
-INP mesh successfully exported from Salome to [CalculiX CAE](https://github.com/calculix/cae):
+INP mesh successfully exported from Salome to [CalculiX Advanced Environment](https://github.com/calculix/cae):
 
 ![Screenshot](salome2ccx.png)
 
